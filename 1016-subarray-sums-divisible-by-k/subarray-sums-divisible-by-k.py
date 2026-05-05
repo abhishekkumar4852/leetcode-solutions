@@ -6,19 +6,16 @@ class Solution:
 
         for num in nums:
             prefix_sum += num
-            remainder = prefix_sum % k
-             
-            if remainder < 0:
+            remainder = prefix_sum %k
 
+            if remainder <0:
                remainder += k
-
-          
 
             if remainder in remainder_count:
                 count += remainder_count[remainder]
                 remainder_count[remainder] +=1
-            else:
-
+            else :
                 remainder_count[remainder] = 1
+
         return count
         
