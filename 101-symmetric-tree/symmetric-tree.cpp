@@ -9,26 +9,23 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-public:
-    bool mirror(TreeNode*left , TreeNode*right){
-        if (left == NULL && right == NULL)
+class Solution{
+    public:
+      bool isMirror(TreeNode*left , TreeNode*right){
+        if(left == NULL && right == NULL)
         return true;
-        if (left == NULL || right == NULL)
+        if(left == NULL || right == NULL)
         return false;
-        if (left->val != right->val)
-        return false;
-        
-        return mirror(left->left , right -> right)&& mirror (left-> right, right->left );
 
-    }
+        return (left->val == right->val)&&
+        isMirror(left->left , right->right)&&
+        isMirror(left->right , right->left);
+      }
 
-    bool isSymmetric(TreeNode* root) {
-        if (root ==  NULL)
+      bool isSymmetric(TreeNode*root){
+        if(root == NULL)
         return true;
 
-        return mirror(root-> left, root-> right);
-        
-        
-    }
+        return isMirror(root->left , root->right);
+      }
 };
